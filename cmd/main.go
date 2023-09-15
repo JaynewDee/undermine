@@ -27,14 +27,18 @@ func main() {
 		duration int
 	)
 
+	// Get input args --note <text>, --duration <minutes>
 	n, d := parseInput(note, duration)
 
 	// Thread is blocked for <duration> minutes
 	sleepTick(n, d)
 
+	// Display dialog and play sound
 	alert(n)
 }
 
+// Main event loop
+// clear -> print -> sleep
 func sleepTick(note string, duration int) {
 	clearScreen()
 
@@ -62,11 +66,6 @@ func parseInput(note string, duration int) (string, int) {
 	flag.Parse()
 
 	return note, duration
-}
-
-func alert(n string) {
-	useAlarm()
-	dialog.Alert(n)
 }
 
 func useAlarm() {
@@ -129,4 +128,9 @@ func printScreen(n string, d int) {
 	displayTitle()
 	displayNote(n)
 	displayDuration(d)
+}
+
+func alert(n string) {
+	useAlarm()
+	dialog.Alert(n)
 }
