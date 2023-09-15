@@ -69,7 +69,6 @@ func parseInput(note string, duration int) (string, int) {
 }
 
 func useAlarm() {
-
 	// read embedded wav data
 	data, err := audioFile.ReadFile(alarmPath)
 	if err != nil {
@@ -119,15 +118,15 @@ func displayDuration(dur int) {
 	sDur.Printf("%dm\n", dur)
 }
 
-func clearScreen() {
-	screen.Clear()
-	screen.MoveTopLeft()
-}
-
 func printScreen(n string, d int) {
 	displayTitle()
 	displayNote(n)
 	displayDuration(d)
+}
+
+func clearScreen() {
+	screen.Clear()
+	screen.MoveTopLeft()
 }
 
 func alert(n string) {
